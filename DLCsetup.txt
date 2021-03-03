@@ -1,4 +1,6 @@
 # set of commands needed to run to setup DLC virtual environment
+# you should enter these on the command line in the location where you want environment set up; but this can be run as a job if you want
+
 
 module load StdEnv/2018.3
 module load python/3.6
