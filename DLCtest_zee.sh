@@ -13,7 +13,7 @@
 module load StdEnv/2018.3
 module load python/3.6
 
-source ./test4/bin/activate
+source ./test4/bin/activate # modify path to environment (called "test4" here) before running
 
 export DLClight=True
 
@@ -24,5 +24,8 @@ nvcc -V
 nvidia-smi
 
 echo "TESTING NOW"
+
+
+# the script below defines the paths to the behavioural data and to the alogrithm and runs DLC to extract traces 
 
 python DeepLabCut_CC_test_zee.py
