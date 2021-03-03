@@ -1,0 +1,25 @@
+# set of commands needed to run to setup DLC virtual environment
+
+module load StdEnv/2018.3
+module load python/3.6
+
+virtualenv env_name
+source ./env_name/bin/activate
+
+pip install tensorflow_gpu==1.15.0 --no-index
+pip install wxPython
+pip install cython --no-index
+pip install deeplabcut
+pip install numpy 1.17.4 --no-index #this is only here in case the install below doesn't work
+pip install numpy 1.16.4 --no-index
+
+# if it doesn't exist, try python 1.17.4
+
+export DLClight=True
+
+
+#deactivate to leave virtual environment
+
+deactivate
+
+# run scripts below; make sure to use module load StdEnv/2018.3 and module load python/3.6 every time!
