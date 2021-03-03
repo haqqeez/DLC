@@ -22,4 +22,5 @@ export DLClight=True
 
 deactivate
 
-# run scripts below; make sure to use module load StdEnv/2018.3 and module load python/3.6 every time!
+# create a slurm job that repeats the module load commands and source ./env_name/bin/activate before running your python DLCscript.py
+# checkout example scripts in this repo
