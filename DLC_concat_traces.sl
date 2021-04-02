@@ -47,6 +47,7 @@ if (( $concat_check == 0 )); then
   if [ -f "behav_videos.tar" ]; then
     echo "Everything concatenated and tarred! Deleting files now..."
     xargs rm <mytarlist.txt
+    echo "Files deleted!"
     gosignal=1
   fi
 
@@ -67,8 +68,6 @@ if (( $gosignal == 1 )) && (( $concat_check_again == 1 )); then
   export DLClight=True
 
   echo "TESTING GPU"
-
-  nvcc -V
 
   nvidia-smi
 
