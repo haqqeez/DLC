@@ -18,7 +18,7 @@ email="youremailhere"
 root_directory=$(pwd)
 
 minimum_size=1M # minimum video file size; default is 1M (1 megabyte)
-minimum_number=3 # minimum number of video files
+minimum_number=3 # minimum number of video files; set this to 1 if you've already concatenated your videos
 concatenate_videos="True" # set to False if you do not wish to concatenate videos before running DLC
 
 # location of the config file for your trained DLC algorithm. This will be copied into folder where DLC is run, for convenience.
