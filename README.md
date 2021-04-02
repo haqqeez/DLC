@@ -42,7 +42,8 @@ DLC_concat_traces.sl will:
 7. ONLY if tar was successful, then, it will delete all the smaller avi files
 8. ONLY if all the above steps were successful, it will then load the DLC virtual environment and begin DLC video analysis on the single new avi file 
 
-DLC_traces.py loads deeplabcut and runs the single function "deeplabcut.analyze_videos()" on the video data and config in your current working directory.
+DLC_traces.py loads deeplabcut and runs the single function "deeplabcut.analyze_videos()" on the video data and config in your current working directory.<br>
+It will output a csv file, an h5 file, and a pickle file.
 
 Concatenation step can be skipped in ParallelDLC.sh, and you can instead use DLC_traces.sl, which skips concatenations and just starts the DLC environment.<br> 
 However, this is not recommended as you will create 3 output files for every recorded video file.<br> 
@@ -54,4 +55,4 @@ If your job completes in less than 10 minutes, it's likely concatenation worked 
 
 Enjoy! If you have any questions, contact me at z.haqqee@gmail.com
 
-- Zeeshan
+-- Zeeshan
