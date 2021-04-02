@@ -76,5 +76,5 @@ if (( $gosignal == 1 )) && (( $concat_check_again == 1 )); then
 
   python DLC_traces.py
 else
-  echo "something went wrong; analysis was not done"
+  echo "ERROR: something went wrong; analysis was not done"
 fi
