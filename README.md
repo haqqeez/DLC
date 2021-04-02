@@ -3,7 +3,7 @@ scripts for DeepLabCut
 
 These scripts can be used to run DeepLabCut on Compute Canada's virtual cluster!
 
-Unless you want to make your own modifications, ParallelDLC.sh is the only script you need to use/modify. 
+Unless you want to make your own modifications, ParallelDLC.sh is the only script you need to use/modify.<br>
 Everything you need to modify in the script is clearly outlined in comments at the start of the script.
 
 ParallelDLC.sh should be put inside the root directory from which you want to run multiple simultaneous deeplabcut sessions.
@@ -44,12 +44,12 @@ DLC_concat_traces.sl will:
 
 DLC_traces.py loads deeplabcut and runs the single function "deeplabcut.analyze_videos()" on the video data and config in your current working directory.
 
-Concatenation step can be skipped in ParallelDLC.sh, and you can instead use DLC_traces.sl, which skips concatenations and just starts the DLC environment. 
-However, this is not recommended as you will create 3 output files for every recorded video file. 
+Concatenation step can be skipped in ParallelDLC.sh, and you can instead use DLC_traces.sl, which skips concatenations and just starts the DLC environment.<br> 
+However, this is not recommended as you will create 3 output files for every recorded video file.<br> 
 We have a file # limit to respect on the cluster! PLEASE make sure to clean up your files if you choose not to concatenate and tar your data automatically!
 
-Concatenation step takes 1-3 minutes, depending on number of videos.
-Overall, scripts should run in ~40-60 minutes (or less) per 40 minutes of video recordings.
+Concatenation step takes 1-3 minutes, depending on number of videos.<br>
+Overall, scripts should run in ~40-60 minutes (or less) per 40 minutes of video recordings.<br>
 If your job completes in less than 10 minutes, it's likely concatenation worked but DLC didn't run. Or you had very few videos (<5)
 
 Enjoy! If you have any questions, contact me at z.haqqee@gmail.com
