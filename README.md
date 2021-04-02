@@ -6,7 +6,7 @@ These scripts can be used to run DeepLabCut on Compute Canada's virtual cluster!
 Unless you want to make your own modifications, ParallelDLC.sh is the only script you need to use/modify. 
 Everything you need to modify in the script is clearly outlined in comments at the start of the script.
 
-ParallelDLC.sh should be put inside root directory from which you want to run multiple simultaneous deeplabcut sessions.
+ParallelDLC.sh should be put inside the root directory from which you want to run multiple simultaneous deeplabcut sessions.
 
 Inputs include:
 - Your initials (what your animal ID starts with; e.g., ZHA001 starts with ZHA) and animal ID length (e.g., ZHA001 is 6 characters long)
