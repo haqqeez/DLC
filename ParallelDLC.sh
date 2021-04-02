@@ -8,7 +8,7 @@
 initials="ZHA"
 
 ### Enter your e-mail below
-email="email@email.email"
+email="computezee@gmail.com"
 
 ### Enter the full parent directory for analysis in the () brackets (default is pwd)
 ### The script will search from *this* directory onwards for BehavCam_0 folders.
@@ -25,7 +25,7 @@ config_file='/lustre03/project/6049321/m3group/DLC/cozee_touchscreen-coco-2021-0
 
 data=$(find $pwd -type d -name "BehavCam_0")
 taskname="DLC"
-end="_concat"
+end="concat"
 
 for session in $data
 do
@@ -47,7 +47,7 @@ do
 		ID=$initials${session#*$initials}
 		ID=${ID::6}
 		date=202${session#*202}; date=${date::10}
-		animalID="$ID-$date-$end"
+		animalID="$ID-$date_$end"
 		ID="$taskname-$ID-$date"
 
 		if (( $concatenate_videos == "True" )) && (( $numVideos > 1 )); then

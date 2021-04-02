@@ -18,7 +18,7 @@ concat_check=$(find -type f -name "*_concat.avi" | wc -l)
 if (( $concat_check == 0 )); then
 
   ID=MYID
-  printf "file '%s'\n" *.ts | sort -V > myvidlist.txt
+  printf "file '%s'\n" *.avi | sort -V > myvidlist.txt
   for f in *.avi; do echo "$f" >> mytarlist.txt; done
 
   # count the total number of frames in all video files
