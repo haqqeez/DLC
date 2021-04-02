@@ -50,7 +50,7 @@ However, this is not recommended as you will create 3 output files for every rec
 We have a file # limit to respect on the cluster! PLEASE make sure to clean up your files if you choose not to concatenate and tar your data automatically!
 
 Concatenation step takes 1-3 minutes, depending on number of videos.<br>
-Overall, scripts should run in ~40-60 minutes (or less) per 40 minutes of video recordings.<br>
+Overall, scripts should run in ~30-50 minutes per 40 minutes of video recordings.<br>
 If your job completes in less than 10 minutes, it's likely concatenation worked but DLC didn't run. Or you had very few videos (<5)
 
 Enjoy! If you have any questions, contact me at z.haqqee@gmail.com
