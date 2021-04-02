@@ -8,7 +8,7 @@
 initials="ZHA"
 
 ### Enter your e-mail below
-email="computezee@gmail.com"
+email="email@email.com"
 
 ### Enter the full parent directory for analysis in the () brackets (default is pwd)
 ### The script will search from *this* directory onwards for BehavCam_0 folders.
