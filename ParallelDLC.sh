@@ -24,7 +24,8 @@ concatenate_videos="True" # set to False if you do not wish to concatenate video
 # location of the config file for your trained DLC algorithm. This will be copied into the python script (e.g., DLC_traces.py)
 CONFIG='/lustre03/project/6049321/m3group/DLC/cozee_touchscreen-coco-2021-03-08/config.yaml'
 
-# location of your DLC environment (with the activation command)
+# location of your DLC environment (including the activation command)
+# If you don't have one, run DLC_setup.sl in your home directory first
 ENV='/home/haqqeez/DLC_env/bin/activate'
 
 # absolute path to your DLC scripts direcory (like DLC_traces.py, DLC_traces.sl, etc.)
