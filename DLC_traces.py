@@ -6,7 +6,7 @@ import glob
 # example: '/lustre03/project/rpp-markpb68/m3group/DLC/cozee_touchscreen-coco-2022-04-03/'
 # leave as (capital letters) 'configpath' if using ParallelDLC.sh
 
-path_config = CONFIGPATH
+path_config = 'CONFIGPATH'
 
 # direction to the folder that containes all of the behavioural recordings in .avi format. Set to current working directory by default.
 # set to current working directory by deafult
