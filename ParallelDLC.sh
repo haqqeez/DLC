@@ -21,9 +21,11 @@ minimum_size=1M # minimum video file size; default is 1M (1 megabyte)
 minimum_number=3 # minimum number of video files; set this to 1 if you've already concatenated your videos
 concatenate_videos="True" # set to False if you do not wish to concatenate videos before running DLC
 
-# location of the config file for your trained DLC algorithm. This will be copied into folder where DLC is run, for convenience.
-### NO LONGER NECESSARY ###
-# config_file='/lustre03/project/6049321/m3group/DLC/cozee_touchscreen-coco-2021-03-08/config.yaml'
+# location of the config file for your trained DLC algorithm. This will be copied into the python script (e.g., DLC_traces.py)
+CONFIG='/lustre03/project/6049321/m3group/DLC/cozee_touchscreen-coco-2021-03-08/config.yaml'
+
+# location of your DLC environment (with the activation command)
+ENV='/home/haqqeez/DLC_env/bin/activate'
 
 ########################################################################################
 
@@ -57,8 +59,9 @@ do
 		if (( $concatenate_videos == "True" )) && (( $numVideos > 1 )); then
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/DLC/DLC_concat_traces.sl .
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/DLC/DLC_traces.py .
-			#cp $config_file .
 			sleep 2
+			sed -i -e "s|CONFIGPATH|$CONFIG|g" DLC_traces.py
+			sed -i -e "s|ENVPATH|$ENV|g" DLC_concat_traces.sl
 			sed -i -e "s/TASKNAME/$ID/g" DLC_concat_traces.sl
 			sed -i -e "s/MYID/$animalID/g" DLC_concat_traces.sl
 			sed -i -e "s/MYEMAIL/$email/g" DLC_concat_traces.sl
@@ -69,6 +72,8 @@ do
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/DLC/DLC_traces.py .
 			#cp $config_file .
 			sleep 2
+			sed -i -e "s|CONFIGPATH|$CONFIG|g" DLC_traces.py
+			sed -i -e "s|ENVPATH|$ENV|g" DLC_traces.sl
 			sed -i -e "s/TASKNAME/$ID/g" DLC_traces.sl
 			sed -i -e "s/MYEMAIL/$email/g" DLC_traces.sl
 			sbatch DLC_traces.sl
