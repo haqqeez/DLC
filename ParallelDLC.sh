@@ -42,7 +42,7 @@ end="_concat"
 for session in $data
 do
 	cd $session
-	numVideos=$(ls -1q *.avi | wc -l)
+	numVideos=$(find -maxdepth 1 -type f -name "*.avi" | wc -l)
 	videoThreshold=$(find -type f -size +$minimum_size -name "*.avi" | wc -l)
 	concat_check=$(find -type f -name "*concat.avi" | wc -l)
 	DLC_data=$(find -type f -name "*DLC*.csv" | wc -l)
@@ -68,9 +68,9 @@ do
 			sleep 2
 			sed -i -e "s|CONFIGPATH|$CONFIG|g" DLC_traces.py
 			sed -i -e "s|ENVPATH|$ENV|g" DLC_concat_traces.sl
-			sed -i -e "s/TASKNAME/$ID/g" DLC_concat_traces.sl
-			sed -i -e "s/MYID/$animalID/g" DLC_concat_traces.sl
-			sed -i -e "s/MYEMAIL/$email/g" DLC_concat_traces.sl
+			sed -i -e "s|TASKNAME|$ID|g" DLC_concat_traces.sl
+			sed -i -e "s|MYID|$animalID|g" DLC_concat_traces.sl
+			sed -i -e "s|MYEMAIL|$email|g" DLC_concat_traces.sl
 			sbatch DLC_concat_traces.sl
 			sleep 2
 		else
@@ -79,8 +79,8 @@ do
 			sleep 2
 			sed -i -e "s|CONFIGPATH|$CONFIG|g" DLC_traces.py
 			sed -i -e "s|ENVPATH|$ENV|g" DLC_traces.sl
-			sed -i -e "s/TASKNAME/$ID/g" DLC_traces.sl
-			sed -i -e "s/MYEMAIL/$email/g" DLC_traces.sl
+			sed -i -e "s|TASKNAME|$ID|g" DLC_traces.sl
+			sed -i -e "s|MYEMAIL|$email|g" DLC_traces.sl
 			sbatch DLC_traces.sl
 			sleep 2
 		fi
