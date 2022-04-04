@@ -22,7 +22,8 @@ minimum_number=3 # minimum number of video files; set this to 1 if you've alread
 concatenate_videos="True" # set to False if you do not wish to concatenate videos before running DLC
 
 # location of the config file for your trained DLC algorithm. This will be copied into folder where DLC is run, for convenience.
-config_file='/lustre03/project/6049321/m3group/DLC/cozee_touchscreen-coco-2021-03-08/config.yaml'
+### NO LONGER NECESSARY ###
+# config_file='/lustre03/project/6049321/m3group/DLC/cozee_touchscreen-coco-2021-03-08/config.yaml'
 
 ########################################################################################
 
@@ -56,7 +57,7 @@ do
 		if (( $concatenate_videos == "True" )) && (( $numVideos > 1 )); then
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/DLC/DLC_concat_traces.sl .
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/DLC/DLC_traces.py .
-			cp $config_file .
+			#cp $config_file .
 			sleep 2
 			sed -i -e "s/TASKNAME/$ID/g" DLC_concat_traces.sl
 			sed -i -e "s/MYID/$animalID/g" DLC_concat_traces.sl
@@ -66,7 +67,7 @@ do
 		else
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/DLC/DLC_traces.sl .
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/DLC/DLC_traces.py .
-			cp $config_file .
+			#cp $config_file .
 			sleep 2
 			sed -i -e "s/TASKNAME/$ID/g" DLC_traces.sl
 			sed -i -e "s/MYEMAIL/$email/g" DLC_traces.sl
