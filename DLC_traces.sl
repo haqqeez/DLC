@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=TASKNAME
 #SBATCH --account=def-markpb68
-#SBATCH --time=0:30:00
+#SBATCH --time=0:15:00
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
+#SBATCH --cpus-per-task=1
 #SBATCH --mem=8000
 #SBATCH --mail-user=MYEMAIL
 #SBATCH --mail-type=ALL
