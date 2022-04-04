@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=DLCsetup
 #SBATCH --account=rpp-markpb68
-#SBATCH --time=0:20:00
+#SBATCH --time=0:40:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
