@@ -9,10 +9,12 @@
 #SBATCH --mail-user=MYEMAIL
 #SBATCH --mail-type=ALL
 
-module load StdEnv/2018.3
-module load python/3.6
+module load scipy-stack/2021a
+module load python/3.8
+  
+### change below to source YOUR home directory containing DLC_env
 
-source /lustre03/project/rpp-markpb68/m3group/DLC/DLC_env/bin/activate
+source /home/haqqeez/DLC_env/bin/activate
 
 export DLClight=True
 
