@@ -28,8 +28,8 @@
 module load scipy-stack/2021a
 module load python/3.8
 
-virtualenv --no-download DLCenv
-source DLCenv/bin/activate
+virtualenv --no-download DLC_env
+source DLC_env/bin/activate
 
 pip install --no-index tensorflow
 python -m pip install --upgrade pip
