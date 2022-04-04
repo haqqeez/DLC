@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
-#SBATCH --mem=4000
+#SBATCH --mem=8000
 #SBATCH --mail-user=MYEMAIL
 #SBATCH --mail-type=ALL
 
@@ -61,10 +61,12 @@ concat_check_again=$(find -type f -name "*_concat.avi" | wc -l)
 if (( $gosignal == 1 )) && (( $concat_check_again == 1 )); then
   rm mytarlist.txt
   
-  module load StdEnv/2018.3
-  module load python/3.6
+  module load scipy-stack/2021a
+  module load python/3.8
+  
+  # source YOUR home directory containing DLC_env
 
-  source /lustre03/project/rpp-markpb68/m3group/DLC/DLC_env/bin/activate
+  source /home/haqqeez/DLC_env/bin/activate
 
   export DLClight=True
 
