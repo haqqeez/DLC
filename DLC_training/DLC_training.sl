@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=DLC_project_training
-#SBATCH --account=rpp-markpb68
+#SBATCH --account=def-markpb68
 #SBATCH --time=12:00:00
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
