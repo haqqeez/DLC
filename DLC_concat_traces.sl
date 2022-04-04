@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=TASKNAME
 #SBATCH --account=def-markpb68
-#SBATCH --time=1:00:00
+#SBATCH --time=0:29:00
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=1
