@@ -65,8 +65,10 @@ if (( $gosignal == 1 )) && (( $concat_check_again == 1 )); then
   module load python/3.8
   
   # source YOUR home directory containing DLC_env
+  # e.g., /home/haqqeez/DLC_env/bin/activate
+  # leave as (capital letters) envpath if using ParallelDLC.sh
 
-  source /home/haqqeez/DLC_env/bin/activate
+  source ENVPATH
 
   export DLClight=True
 
