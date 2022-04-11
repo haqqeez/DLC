@@ -41,16 +41,17 @@ data=$(find $root_directory -type d -name "BehavCam_0")
 taskname="DLC"
 end="_concat"
 
-if (( $compute == "GPU" )) && (( $concatenate_videos == "True" )); then
+if [ $compute == "GPU" ] && [ $concatenate_videos == "True" ]; then
 	jobscript=DLC_concat_traces.sl
-elif (( $compute == "CPU" )) && (( $concatenate_videos == "True" )); then
+elif [ $compute == "CPU" ] && [ $concatenate_videos == "True" ]; then
 	jobscript=DLC_concat_traces_cpu.sl
-elif (( $compute == "GPU" )) && (( $concatenate_videos == "False" )); then
+elif [ $compute == "GPU" ] && [ $concatenate_videos == "False" ]; then
 	jobscript=DLC_traces.sl
-elif (( $compute == "CPU" )) && (( $concatenate_videos == "False" )); then
+elif [ $compute == "CPU" ] && [ $concatenate_videos == "False" ]; then
 	jobscript=DLC_traces_cpu.sl
 else
 	echo "ERROR: Please choose valid compute and concatenation settings."
+fi
 
 for session in $data
 do
