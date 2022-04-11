@@ -7,7 +7,7 @@
 ###### Except that the job names might look strange and you won't get e-mail notifications
 
 # for example, the animal "ZHA001" has initials "ZHA" and IDlength 6
-initials="ZHA"
+initials="ZHP"
 IDlength=6
 
 ### Enter your e-mail below
@@ -45,9 +45,9 @@ if (( $compute == "GPU" )) && (( $concatenate_videos == "True" )); then
 	jobscript=DLC_concat_traces.sl
 elif (( $compute == "CPU" )) && (( $concatenate_videos == "True" )); then
 	jobscript=DLC_concat_traces_cpu.sl
-if (( $compute == "GPU" )) && (( $concatenate_videos == "False" )); then
+elif (( $compute == "GPU" )) && (( $concatenate_videos == "False" )); then
 	jobscript=DLC_traces.sl
-if (( $compute == "CPU" )) && (( $concatenate_videos == "False" )); then
+elif (( $compute == "CPU" )) && (( $concatenate_videos == "False" )); then
 	jobscript=DLC_traces_cpu.sl
 else
 	echo "ERROR: Please choose valid compute and concatenation settings."
