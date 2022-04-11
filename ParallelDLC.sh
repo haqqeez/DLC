@@ -21,8 +21,10 @@ minimum_size=1M # minimum video file size; default is 1M (1 megabyte)
 minimum_number=3 # minimum number of video files; set this to 1 if you've already concatenated your videos
 concatenate_videos="True" # set to False if you do not wish to concatenate videos before running DLC
 
+compute="CPU" # do you want to use GPU or CPU?
+
 # location of the config file for your trained DLC algorithm. This will be copied into the python script (e.g., DLC_traces.py)
-CONFIG='/lustre03/project/6049321/m3group/DLC/cozee_touchscreen-coco-2021-03-08/config.yaml'
+CONFIG='/lustre03/project/6049321/m3group/DLC/cozee_touchscreen-coco-2022-04-03/config.yaml'
 
 # location of your DLC environment (including the activation command)
 # If you don't have one, run DLC_setup.sl in your home directory first
@@ -38,6 +40,17 @@ MY_DLC_SCRIPTS_DIRECTORY='/lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/D
 data=$(find $root_directory -type d -name "BehavCam_0")
 taskname="DLC"
 end="_concat"
+
+if (( $compute == "GPU" )) && (( $concatenate_videos == "True" )); then
+	jobscript=DLC_concat_traces.sl
+elif (( $compute == "CPU" )) && (( $concatenate_videos == "True" )); then
+	jobscript=DLC_concat_traces_cpu.sl
+if (( $compute == "GPU" )) && (( $concatenate_videos == "False" )); then
+	jobscript=DLC_traces.sl
+if (( $compute == "CPU" )) && (( $concatenate_videos == "False" )); then
+	jobscript=DLC_traces_cpu.sl
+else
+	echo "ERROR: Please choose valid compute and concatenation settings."
 
 for session in $data
 do
@@ -62,29 +75,18 @@ do
 		animalID="$ID-$date$end"
 		ID="$taskname-$ID-$date"
 
-		if (( $concatenate_videos == "True" )) && (( $numVideos > 1 )); then
-			cp $MY_DLC_SCRIPTS_DIRECTORY/DLC_concat_traces.sl .
+		if (( $numVideos > 1 )); then
+			cp $MY_DLC_SCRIPTS_DIRECTORY/$jobscript .
 			cp $MY_DLC_SCRIPTS_DIRECTORY/DLC_traces.py .
 			sleep 2
 			sed -i -e "s|CONFIGPATH|$CONFIG|g" DLC_traces.py
-			sed -i -e "s|ENVPATH|$ENV|g" DLC_concat_traces.sl
-			sed -i -e "s|TASKNAME|$ID|g" DLC_concat_traces.sl
-			sed -i -e "s|MYID|$animalID|g" DLC_concat_traces.sl
-			sed -i -e "s|MYEMAIL|$email|g" DLC_concat_traces.sl
-			sbatch DLC_concat_traces.sl
-			sleep 2
-		else
-			cp $MY_DLC_SCRIPTS_DIRECTORY/DLC_traces.sl .
-			cp $MY_DLC_SCRIPTS_DIRECTORY/DLC_traces.py .
-			sleep 2
-			sed -i -e "s|CONFIGPATH|$CONFIG|g" DLC_traces.py
-			sed -i -e "s|ENVPATH|$ENV|g" DLC_traces.sl
-			sed -i -e "s|TASKNAME|$ID|g" DLC_traces.sl
-			sed -i -e "s|MYEMAIL|$email|g" DLC_traces.sl
-			sbatch DLC_traces.sl
+			sed -i -e "s|ENVPATH|$ENV|g" $jobscript
+			sed -i -e "s|TASKNAME|$ID|g" $jobscript
+			sed -i -e "s|MYID|$animalID|g" $jobscript
+			sed -i -e "s|MYEMAIL|$email|g" $jobscript
+			sbatch $jobscript
 			sleep 2
 		fi
-
 	else
 		echo "ERROR: Not compatible for analysis; check videos in $session"
 	fi
