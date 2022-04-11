@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=TASKNAME
-#SBATCH --account=def-wilsyl
+#SBATCH --account=def-markpb68
 #SBATCH --time=0:28:00
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
