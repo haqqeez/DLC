@@ -7,18 +7,18 @@
 ###### Except that the job names might look strange and you won't get e-mail notifications
 
 # for example, the animal "ZHA001" has initials "ZHA" and IDlength 6
-initials="ZHP"
+initials="ZHA"
 IDlength=6
 
 ### Enter your e-mail below
-email="youremailhere"
+email="computezee@gmail.com"
 
 ### Enter the full parent directory for analysis in the () brackets (default is pwd)
 ### The script will search from *this* directory onwards for BehavCam_0 folders.
 root_directory=$(pwd)
 
 minimum_size=1M # minimum video file size; default is 1M (1 megabyte)
-minimum_number=3 # minimum number of video files; set this to 1 if you've already concatenated your videos
+minimum_number=12 # minimum number of video files; set this to 1 if you've already concatenated your videos
 concatenate_videos="True" # set to False if you do not wish to concatenate videos before running DLC
 
 compute="CPU" # do you want to use GPU or CPU?
@@ -42,16 +42,22 @@ taskname="DLC"
 end="_concat"
 
 if [ $compute == "GPU" ] && [ $concatenate_videos == "True" ]; then
+	echo 0
 	jobscript=DLC_concat_traces.sl
 elif [ $compute == "CPU" ] && [ $concatenate_videos == "True" ]; then
+	echo 1
 	jobscript=DLC_concat_traces_cpu.sl
 elif [ $compute == "GPU" ] && [ $concatenate_videos == "False" ]; then
 	jobscript=DLC_traces.sl
+	echo 3
 elif [ $compute == "CPU" ] && [ $concatenate_videos == "False" ]; then
 	jobscript=DLC_traces_cpu.sl
+	echo 4
 else
 	echo "ERROR: Please choose valid compute and concatenation settings."
 fi
+
+echo $jobscript
 
 for session in $data
 do
@@ -62,7 +68,8 @@ do
 	DLC_data=$(find -type f -name "*DLC*.csv" | wc -l)
 
 	if (( $DLC_data > 0 )); then
-		echo "DONE $session it is already analyzed"
+		#echo "DONE $session it is already analyzed"
+		true
 	elif (( $numVideos < $minimum_number )); then
 		echo "SKIPPED: too few video files to analyze $session"
 	elif (( $numVideos < $videoThreshold )); then
@@ -76,8 +83,8 @@ do
 		animalID="$ID-$date$end"
 		ID="$taskname-$ID-$date"
 
-		if (( $numVideos > 1 )); then
-			cp $MY_DLC_SCRIPTS_DIRECTORY/$jobscript .
+		if (( $numVideos > 0 )); then
+			cp "$MY_DLC_SCRIPTS_DIRECTORY/$jobscript" .
 			cp $MY_DLC_SCRIPTS_DIRECTORY/DLC_traces.py .
 			sleep 2
 			sed -i -e "s|CONFIGPATH|$CONFIG|g" DLC_traces.py
@@ -86,9 +93,11 @@ do
 			sed -i -e "s|MYID|$animalID|g" $jobscript
 			sed -i -e "s|MYEMAIL|$email|g" $jobscript
 			sbatch $jobscript
-			sleep 2
+			#sleep 2
 		fi
+
 	else
 		echo "ERROR: Not compatible for analysis; check videos in $session"
 	fi
+
 done
