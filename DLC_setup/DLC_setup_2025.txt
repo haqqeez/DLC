@@ -1,5 +1,7 @@
 ################################################################################################
 
+## NOTE: Currently, does not work on the rorqual cluster
+
 ## WARNING ###
 
 ### MAKE SURE YOU ARE IN YOUR HOME DIRECTORY! NOT PROJECTS! ##
