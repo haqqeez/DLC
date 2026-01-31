@@ -24,6 +24,7 @@
 
 ################################################################################################
 
+## NOTE: This is outdated on rorqual 2026 onwards (Was designed for Beluga 2021-2025)
 
 module load scipy-stack/2021a
 module load python/3.8

@@ -61,8 +61,11 @@ concat_check_again=$(find -type f -name "*_concat.avi" | wc -l)
 if (( $gosignal == 1 )) && (( $concat_check_again == 1 )); then
   rm mytarlist.txt
   
-  module load scipy-stack/2021a
-  module load python/3.8
+  module purge
+  module load StdEnv/2020
+  module load python/3.10
+  module load cuda/11.4 # maybe optional
+  module load cudnn/8.2.0 # maybe optional
   
   # source YOUR home directory containing DLC_env
   # e.g., /home/haqqeez/DLC_env/bin/activate

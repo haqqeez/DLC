@@ -5,6 +5,8 @@ import os
 # example: '/lustre03/project/rpp-markpb68/m3group/DLC/cozee_touchscreen-coco-2022-04-03/'
 path_config = '/absolute//path/to/config.yaml'
 
+path_config = '/lustre09/project/rrg-markpb68/m3group/DLC/cozee_touchscreen-coco-2022-04-03/config.yaml'
+
 # direction to the folder that containes all of the behavioural recordings in .avi format. Set to current working directory by default.
 # set to current working directory by deafult
 my_videos_directory = os.getcwd() + '/'
